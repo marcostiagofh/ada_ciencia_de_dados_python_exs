@@ -46,12 +46,14 @@ while True:
 				while not valor_validado:
 					valor_saque_str = input("Por favor, informe o valor de depósito no formato XXXXX :")
 					if re.match(regex_pattern_saque,valor_saque_str):
-						valor_saque = int(valor_deposito_str)
+						valor_saque = int(valor_saque_str)
 						valor_validado = True
 						if valor_saque > 500:
 							print("Valor acima do limite permitido (500)")
 							valor_validado = False
-							
+						elif valor_saque <= 0:
+							print("Valor negativo ou zero")
+							valor_validado = False	
 				numero_saques += 1
 				saldo -= valor_saque
 				registro_deposito = "\nSaque {}\nSaldo {}"
