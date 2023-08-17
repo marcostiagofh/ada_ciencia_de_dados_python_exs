@@ -1,5 +1,24 @@
 import re
 
+def faz_deposito(valor_deposito):
+	global extrato
+	global saldo
+
+	saldo += valor_deposito
+	registro_deposito = "\nDeposito {}\nSaldo {}"
+	extrato += registro_deposito.format(valor_deposito, saldo)
+	print(registro_deposito.format(valor_deposito, saldo)) 
+
+def faz_saque():
+	global saldo
+	global extrato
+
+	numero_saques += 1
+	saldo -= valor_saque
+	registro_deposito = "\nSaque {}\nSaldo {}"
+	extrato += registro_deposito.format(valor_saque, saldo)
+	print(registro_deposito.format(valor_saque, saldo))				
+	
 regex_pattern_deposito = r'^\d+\.\d{2}$'
 regex_pattern_saque = r'^\d+$'
 
@@ -32,10 +51,7 @@ while True:
 				if re.match(regex_pattern_deposito,valor_deposito_str):
 					valor_deposito = float(valor_deposito_str)
 					valor_validado = True					
-			saldo += valor_deposito
-			registro_deposito = "\nDeposito {}\nSaldo {}"
-			extrato += registro_deposito.format(valor_deposito, saldo)
-			print(registro_deposito.format(valor_deposito, saldo))       			
+			faz_deposito(valor_deposito)      			
 		case "S":
 			print("Sacar")		
 			if numero_saques == LIMITE_SAQUES:
@@ -54,12 +70,7 @@ while True:
 						elif valor_saque <= 0:
 							print("Valor negativo ou zero")
 							valor_validado = False	
-				numero_saques += 1
-				saldo -= valor_saque
-				registro_deposito = "\nSaque {}\nSaldo {}"
-				extrato += registro_deposito.format(valor_saque, saldo)
-				print(registro_deposito.format(valor_saque, saldo))				
-						
+				faz_saque(valor_saque)		
 		case "E":
 			print("Extrato")
 			print(extrato)            
