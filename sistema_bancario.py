@@ -52,7 +52,7 @@ def criar_usuario(usuarios):
 	
 	if cpf in usuarios:
 		print("Erro! usuario ja cadastrado")		
-    else:
+	else:
 		usuarios[cpf] = {
 			"nome":nome,
 			"dt_nasc": dt_nasc,
@@ -123,9 +123,11 @@ while True:
 		case "D":
 			print("Deposito")
 			valor_validado = False
-			valor_deposito = 0.0
 			while not valor_validado:
-				Fvalor_validado = True					
+				valor_deposito_str = input("Por favor, informe o valor de depósito no formato XXXXX.XX :")
+				if re.match(regex_pattern_deposito,valor_deposito_str):
+					valor_deposito = float(valor_deposito_str)
+					valor_validado = True					
 			faz_deposito(saldo, extrato, valor_deposito)
 
 		case "S":
