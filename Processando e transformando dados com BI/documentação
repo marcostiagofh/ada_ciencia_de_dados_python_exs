@@ -1,0 +1,25 @@
+tive de remover a constraint fk_employee 
+	foreign key(Super_ssn) references employee(Ssn)
+adicionar as linhas de employee e depois aplicar novamente a constraint, pois um dos employees tinha o super_ssn null
+
+carreguei as tabelas
+
+tabela employee alterei salary pra fixed decimal number
+
+employee que tinha o super_ssn null é gerente (James E. Borg)
+
+fiz mesclagem da consulta employee com a consulta department pra juntar na mesma tabela employee e nome do departamento. removi as colunas desnecessarias
+
+fiz juncao de employees com seus respectivos gerentes, a fim de trazer o nome do gerente, combinando as colunas fname, minit e lname. ao final, removi as colunas desnecessarias. Tambem combinei as colunas de nome do employee, unificando
+
+agrupei as horas por projeto
+
+combinei os nomes de departamento e localizacao, usando mesclar ao invés de atribuir, pela necessidade de junção para trazer os campos necessários. Append é usado quando as tabelas tem a mesma estrutura e representam rows distintas; aqui são as mesmas rows, mas com campos diferentes
+
+agrupei employees por gerente, pra saber quantos empregados cada gerente tem
+
+eliminei as colunas desnecessarias de todas as tabelas
+
+coloquei o nome de empregado na tabela de horas trabalhadas por projeto
+
+criei o relatório
